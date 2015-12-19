@@ -1,0 +1,11 @@
+{
+    "name": "language-coffee",
+    "version": "0.0.0",
+    "private": true,
+    "description": "Enhanced CoffeeScript language support for Atom",
+    "repository": "",
+    "license": "",
+    "engines": { "atom": "*" },
+    "dependencies": {},
+    "devDependencies": { "atom-syntax-tools": "^0.9.1" }
+}

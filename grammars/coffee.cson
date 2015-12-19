@@ -1,0 +1,213 @@
+'fileTypes': [
+  'coffee'
+]
+'name': 'Coffee'
+'scopeName': 'source.coffee'
+'patterns': [
+  {
+    'match': '(\\#\\#)(.*)(\\#\\#)\\r?\\n'
+    'captures':
+      '1':
+        'name': 'comment.section.open.coffee'
+      '2':
+        'name': 'comment.section.title.coffee'
+      '3':
+        'name': 'comment.section.close.coffee'
+    'name': 'comment.section.coffee'
+  }
+  {
+    'begin': '^\\s*(\\#)\\s*([A-Z0-9_]+)\\s*(?:\\-\\s*([^\\r\\n]*))?$'
+    'beginCaptures':
+      '1':
+        'name': 'comment.documentation.open.coffee'
+      '2':
+        'name': 'comment.documentation.title.coffee'
+      '3':
+        'name': 'comment.documentation.summary.coffee'
+    'contentName': 'comment.documentation.content.coffee'
+    'end': '^\\s*(?![\\s\\#])'
+    'endCaptures':
+      '0':
+        'name': 'comment.documentation.close.coffee'
+    'name': 'comment.documentation.coffee'
+    'patterns': [
+      {
+        'match': '^\\s*\\#\\s*SYNTAX'
+        'name': 'comment.documentation.syntax.coffee'
+      }
+      {
+        'match': '^\\s*\\#\\s*OUTPUT[S]?'
+        'name': 'comment.documentation.output.coffee'
+      }
+      {
+        'match': '^\\s*\\#\\s*INPUT[S]?'
+        'name': 'comment.documentation.input.coffee'
+      }
+      {
+        'match': '^\\s*\\#\\s*PROPERTY|PROPERTIES'
+        'name': 'comment.documentation.properties.coffee'
+      }
+      {
+        'match': '^\\s*\\#.*'
+        'name': 'comment.documentation.content.coffee'
+      }
+    ]
+  }
+  {
+    'match': '(?<!\\\\)\\#[^\\{].*'
+    'captures':
+      '1':
+        'name': 'comment.line.open.coffee'
+      '2':
+        'name': 'comment.line.content.coffee'
+    'name': 'comment.line.coffee'
+  }
+  {
+    'match': '\\s*\\b(break|catch|continue|do|else|finally|for|if|new|return|switch|then|try|unless|until|when|while)\\b'
+    'name': 'keyword.control.coffee'
+  }
+  {
+    'match': '\\s*\\b(and|delete|by|extends|in|instanceof|is|isnt|loop|not|of|or|throw|typeof)\\b'
+    'name': 'operator.word.coffee'
+  }
+  {
+    'match': '\\b(!important)\\b'
+    'name': 'keyword.qualifier.coffee'
+  }
+  {
+    'match': '\\b(class|debugger|super|this)\\b'
+    'name': 'keyword.type.coffee'
+  }
+  {
+    'begin': '^\\s*(\\w+)(\\:)\\s*(\\()'
+    'beginCaptures':
+      '1':
+        'name': 'function.name.coffee'
+      '2':
+        'name': 'operator.character.coffee'
+      '3':
+        'name': 'enclosure.group.open.coffee'
+    'end': '(\\))\\s*(\\-\\>)'
+    'endCaptures':
+      '1':
+        'name': 'enclosure.group.close.coffee'
+      '2':
+        'name': 'operator.character.coffee'
+    'patterns': [
+      {
+        'match': '\\,'
+        'name': 'operator.character.separator.coffee'
+      }
+      {
+        'match': '\\w+'
+        'name': 'variable.argument.input.coffee'
+      }
+      {
+        'match': '\\@'
+        'name': 'operator.character.coffee'
+      }
+    ]
+  }
+  {
+    'match': '^\\s*(\\w+)(\\:)\\s*(\\-\\>)'
+    'captures':
+      '1':
+        'name': 'function.name.coffee'
+      '2':
+        'name': 'operator.character.coffee'
+      '3':
+        'name': 'operator.character.coffee'
+  }
+  {
+    'begin': '///'
+    'beginCaptures':
+      '0':
+        'name': 'enclosure.string.regex.open.coffee'
+    'end': '///'
+    'endCaptures':
+      '0':
+        'name': 'enclosure.string.regex.close.coffee'
+    'contentName': 'literal.string.regex.coffee'
+  }
+  {
+    'match': '\\b(false|no|off|on|true|yes)\\b'
+    'name': 'literal.boolean.cpp.coffee'
+  }
+  {
+    'match': '(/)(.*)(/)'
+    'captures':
+      '1':
+        'name': 'enclosure.string.regex.open.coffee'
+      '2':
+        'name': 'literal.string.regex.coffee'
+      '3':
+        'name': 'enclosure.string.regex.close.coffee'
+  }
+  {
+    'match': '\\b(\\d+(?:\\.\\d+)?(?:[eE][\\+\\-]?\\d+)?)\\b'
+    'name': 'literal.number.coffee'
+  }
+  {
+    'match': '\\b(null|undefined)\\b'
+    'name': 'literal.null.cpp.coffee'
+  }
+  {
+    'match': '([\\\'\\"])([\\\'\\"])'
+    'captures':
+      '1':
+        'name': 'enclosure.string.open.coffee'
+      '2':
+        'name': 'enclosure.string.close.coffee'
+  }
+  {
+    'match': '(?<!\\\\)([\\\'\\"])(\\.*)(?:[^\\\\]|\\\\\\\\)?([\\\'\\"])'
+    'captures':
+      '0':
+        'name': 'literal.string.coffee'
+      '1':
+        'name': 'enclosure.string.open.coffee'
+      '2':
+        'name': 'literal.string.content.coffee'
+      '3':
+        'name': 'enclosure.string.close.coffee'
+  }
+  {
+    'begin': '(?<!\\\\)([\\\'\\"]+)'
+    'beginCaptures':
+      '1':
+        'name': 'enclosure.string.open.coffee'
+    'contentName': 'literal.string.coffee'
+    'end': '(?<!\\\\)([\\\'\\"]+)'
+    'endCaptures':
+      '1':
+        'name': 'enclosure.string.close.coffee'
+  }
+  {
+    'match': '(\\@|\\,|\\;|\\?|\\~|\\.|\\.\\*|\\:|\\:\\:|\\^|\\^\\=|\\%|\\%\\=|\\=|\\=\\=|\\!|\\!\\=|\\*|\\*\\=|/|/\\=|\\&|\\&\\=|\\&\\&|\\||\\|\\=|\\|\\||\\+|\\+\\=|\\+\\+|\\-|\\-\\=|\\-\\-|\\>|\\>\\=|\\>\\>|\\>\\>\\=|\\<|\\<\\=|\\<\\<|\\<\\<\\=)'
+    'name': 'operator.character.coffee'
+  }
+  {
+    'match': '\\['
+    'name': 'enclosure.index.open.coffee'
+  }
+  {
+    'match': '\\]'
+    'name': 'enclosure.index.close.coffee'
+  }
+  {
+    'match': '\\('
+    'name': 'enclosure.group.open.coffee'
+  }
+  {
+    'match': '\\)'
+    'name': 'enclosure.group.close.coffee'
+  }
+  {
+    'match': '\\{'
+    'name': 'enclosure.block.open.coffee'
+  }
+  {
+    'match': '\\}'
+    'name': 'enclosure.block.close.coffee'
+  }
+]
