@@ -5,6 +5,17 @@
 'scopeName': 'source.coffee'
 'patterns': [
   {
+    'begin': '\\#\\#\\#'
+    'beginCaptures':
+      '0':
+        'name': 'comment.block.open.coffee'
+    'contentName': 'comment.block.content.coffee'
+    'end': '\\#\\#\\#'
+    'endCaptures':
+      '0':
+        'name': 'comment.block.close.coffee'
+  }
+  {
     'match': '(\\#\\#)(.*)(\\#\\#)\\r?\\n'
     'captures':
       '1':
