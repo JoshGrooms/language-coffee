@@ -2,6 +2,12 @@
 # Written by Josh Grooms on 20151218
 
 
+commentBlock =
+    begin: /\#\#\#/;
+    beginCaptures: 'comment.block.open.coffee';
+    contentName: 'comment.block.content.coffee';
+    end: /\#\#\#/;
+    endCaptures: 'comment.block.close.coffee';
 
 # COMMENTLINE - Captures any valid single-line comment in Stylus.
 commentLine =
@@ -80,7 +86,8 @@ documentation =
 # Ordering is important here
 module.exports =
     [
-         commentSection,
-         documentation,
-         commentLine
+        commentBlock,
+        commentSection,
+        documentation,
+        commentLine
     ];
