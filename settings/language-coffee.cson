@@ -1,6 +1,6 @@
 '.source.coffee':
     'editor':
-        'commentStart': '#'
+        'commentStart': '# '
         'increaseIndentPattern': '(?x)
             ^\\s*
             (
