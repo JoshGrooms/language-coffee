@@ -1,32 +1,55 @@
 # CHANGELOG
 # Written by Josh Grooms on 20151218
 
+Patterns = require('./Utilities')
+
 
 
 simpleFunction =
-    match: /^\s*(\w+)(\:)\s*(\-\>)/;
+    match:
+        ///
+            (?: (\w+) (\:\:) )?
+            (\w+) \s* ([\:\=]) \s*
+            ( [\-\=] \> )
+        ///;
     captures:
-        1: name: 'function.name.coffee';
-        2: name: 'operator.character.coffee';
-        3: name: 'operator.character.coffee';
+        1: name: 'type.name.coffee';
+        2: name: 'operator.character.resolution.coffee'
+        3: name: 'function.name.coffee';
+        4: name: 'operator.character.coffee';
+        5: name: 'operator.character.coffee';
 
 functions =
-    begin: /^\s*(\w+)(\:)\s*(\()/;
+    begin:
+        ///
+            (?: (\w+)(\:\:) )?
+            (\w+) \s* ( [\:\=] ) \s*
+            (\()
+        ///;
     captures:
-        1: name: 'function.name.coffee';
-        2: name: 'operator.character.coffee';
-        3: name: 'enclosure.group.open.coffee';
+        1: name: 'type.name.coffee';
+        2: name: 'operator.character.resolution.coffee'
+        3: name: 'function.name.coffee';
+        4: name: 'operator.character.coffee';
+        5: name: 'enclosure.group.open.coffee';
 
-    end: /(\))\s*(\-\>)/;
+    end: /(\))\s*([\-\=]\>)/;
     endCaptures:
         1: name: 'enclosure.group.close.coffee';
         2: name: 'operator.character.coffee';
 
     patterns:
         [
+            Patterns.Booleans,
+            Patterns.Nulls,
+            Patterns.Numbers,
+            Patterns.Separator,
+
             {
-                match: /\,/;
-                name: 'operator.character.separator.coffee';
+                match: /(\w+)\s*(\=)\s*/
+                captures:
+                    1: name: 'variable.argument.input.coffee';
+                    2: name: 'operator.character.coffee';
             }
             {
                 match: /\w+/;
@@ -42,4 +65,5 @@ module.exports =
     [
         functions,
         simpleFunction,
+        # simpleMethod,
     ];
