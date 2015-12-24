@@ -90,15 +90,19 @@
     'name': 'keyword.type.coffee'
   }
   {
-    'begin': '^\\s*(\\w+)(\\:)\\s*(\\()'
+    'begin': '(?:(\\w+)(\\:\\:))?(\\w+)\\s*([\\:\\=])\\s*(\\()'
     'beginCaptures':
       '1':
-        'name': 'function.name.coffee'
+        'name': 'type.name.coffee'
       '2':
-        'name': 'operator.character.coffee'
+        'name': 'operator.character.resolution.coffee'
       '3':
+        'name': 'function.name.coffee'
+      '4':
+        'name': 'operator.character.coffee'
+      '5':
         'name': 'enclosure.group.open.coffee'
-    'end': '(\\))\\s*(\\-\\>)'
+    'end': '(\\))\\s*([\\-\\=]\\>)'
     'endCaptures':
       '1':
         'name': 'enclosure.group.close.coffee'
@@ -106,8 +110,28 @@
         'name': 'operator.character.coffee'
     'patterns': [
       {
+        'match': '\\b(false|no|off|on|true|yes)\\b'
+        'name': 'literal.boolean.cpp.coffee'
+      }
+      {
+        'match': '\\b(null|undefined)\\b'
+        'name': 'literal.null.cpp.coffee'
+      }
+      {
+        'match': '\\b(\\d+(?:\\.\\d+)?(?:[eE][\\+\\-]?\\d+)?)\\b'
+        'name': 'literal.number.coffee'
+      }
+      {
         'match': '\\,'
         'name': 'operator.character.separator.coffee'
+      }
+      {
+        'match': '(\\w+)\\s*(\\=)\\s*'
+        'captures':
+          '1':
+            'name': 'variable.argument.input.coffee'
+          '2':
+            'name': 'operator.character.coffee'
       }
       {
         'match': '\\w+'
@@ -120,13 +144,17 @@
     ]
   }
   {
-    'match': '^\\s*(\\w+)(\\:)\\s*(\\-\\>)'
+    'match': '(?:(\\w+)(\\:\\:))?(\\w+)\\s*([\\:\\=])\\s*([\\-\\=]\\>)'
     'captures':
       '1':
-        'name': 'function.name.coffee'
+        'name': 'type.name.coffee'
       '2':
-        'name': 'operator.character.coffee'
+        'name': 'operator.character.resolution.coffee'
       '3':
+        'name': 'function.name.coffee'
+      '4':
+        'name': 'operator.character.coffee'
+      '5':
         'name': 'operator.character.coffee'
   }
   {
